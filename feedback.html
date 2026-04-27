@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Feedback | AI Resume Reviewer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="animated-bg"></div>
+  <div class="feedback-container">
+    <h2>Resume Feedback</h2>
+    {% if mismatch %}
+      <div class="mismatch">Details mismatch: Please upload a proper resume.</div>
+    {% else %}
+      <div class="feedback-section"><b>Positives:</b> {{ positives }}</div>
+      <div class="feedback-section"><b>Recommendations:</b> {{ recommendations }}</div>
+      <div class="feedback-section efficiency-score"><b>Efficiency Score (Before vs After):</b> {{ efficiency }}</div>
+      <div class="feedback-section"><b>Conclusion:</b> {{ conclusion }}</div>
+    {% endif %}
+    <a href="/" style="display:block;text-align:center;margin-top:1.5rem;color:#2575fc;">&#8592; Back to Home</a>
+  </div>
+  {% include 'chatbox.html' %}
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

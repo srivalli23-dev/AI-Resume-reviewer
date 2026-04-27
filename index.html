@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Reviewer & Student Guide</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="animated-bg"></div>
+  <div class="form-container">
+    <h1>AI Resume Reviewer & Student Guide</h1>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="number" name="age" placeholder="Your Age" min="10" max="99" required>
+      <select name="designation" required>
+        <option value="">Select Designation</option>
+        <option>Engineer</option>
+        <option>Doctor</option>
+        <option>Data Analyst</option>
+        <option>IAS Aspirant</option>
+        <option>Student</option>
+        <option>Other</option>
+      </select>
+      <input type="file" name="resume" accept="application/pdf" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  {% include 'chatbox.html' %}
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
